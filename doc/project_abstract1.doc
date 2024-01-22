@@ -1,0 +1,26 @@
+What is your product, on a high level?
+A website for providing feedback from students to instructors in as timely a fashion as possible. 
+
+Whom is it for?
+Students wishing to provide feedback(/criticism) along with instructors wishing to receive feedback on their instruction
+
+What problem does it solve?
+Miscommunication between instructors and students, along with facilitating more frequent updates.
+
+What alternatives are available?
+RateMyProfessor
+
+Why is this project compelling and worth developing?
+Sometimes the labs have varying quality and thus being able to provide feedback would help future classes have better instruction/instructional material
+
+
+What are the competitors and what is novel in your approach?
+RateMyProfessor only provides a semester scope and thus tends to lead to a lot of hyperbole in the reviews from pent up frustrations. Also the criticism is less directed at the material and more towards the instructor, and is typically used as a warning systems for future students then a method of constructive criticism unlike our product.
+
+Make it clear that the system can be built, making good use of the available resources and technology.
+Websites that access databases with rankings and are intended to provide feedback already exist, just not for the specific purpose of our project.
+
+Do you have a client login and a admin login?
+Yes, Instructors as admin and client will be those taking the Labs
+What if we let Admins view but not modify other classes teaching the same material as them?
+Simply to differentiate them from clients along with that ability for them to view a wider range of feedback
