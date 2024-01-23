@@ -1,4 +1,4 @@
-# Rate My Lab
+# eLABorate ( RateMyLab)
 > MW CSC 4350 Software Engineering-ctw
 
 ## Description
