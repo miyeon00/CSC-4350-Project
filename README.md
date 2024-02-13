@@ -5,11 +5,44 @@
  A website for providing feedback from students to instructors in as timely a fashion as possible. 
 
 ## Team 6
- - Ezeq uiel Acevedo 
+ - Ezequiel Lorenzo Acevedo 
  - Mi Yeon Park 
  - Ayush Patel 
  - Zachary Watkins 
- - Glenn Felton 
+ - Glenn Felton
+
+## Sprint 2: Tasks
+<table>
+  <thead>
+    <tr>
+      <th>In Progress</th>
+      <th>Done</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Improved problem statement - ??</td>
+      <td>Context diagram</td>
+    </tr>
+    <tr>
+      <td>Activity diagram - Glenn</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>System requirements - All</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Database management - Ezequiel</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Use case diagrams - Glenn, ??</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
 
 ## Built With
 <p align='left'>
