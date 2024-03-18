@@ -1,17 +1,28 @@
 function Register(){
+    var pantherId = document.getElementById("pantherId").value; // 9 digits
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
-  
+    var firstName = document.getElementById("firstName").value;
+    var lastName = document.getElementById("lastName").value;
+    var email = document.getElementById("email").value;
+    var role = document.querySelector('input[name="role"]:checked').value;
+
     var params = {
-      username: username
-      , password: password
+      pantherId: pantherId,
+      username: username,
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      role:role
     }
+    console.log(params);
   
-    var login_url = "http://18.221.233.120/users/login"
+    var user_create_url = common_url+"/users/create";
   
     $.ajax({
-      type: "Get",
-      url: login_url,
+      type: "Post",
+      url: user_create_url,
       data: params,
       success: function (res) {
         alert(res.message);

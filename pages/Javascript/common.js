@@ -1,4 +1,4 @@
-const common_url = "http://18.211.233.120";
+const common_url = "http://ec2-18-221-233-120.us-east-2.compute.amazonaws.com";
 
 function setCookie(name, value, exp) {
     var date = new Date(); date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
