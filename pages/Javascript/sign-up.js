@@ -1,4 +1,5 @@
 function Register(){
+
     var pantherId = document.getElementById("pantherId").value; // 9 digits
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
@@ -16,20 +17,15 @@ function Register(){
       email: email,
       role:role
     }
-    console.log(params);
+
+    console.log(params)
   
-    var user_create_url = common_url+"/users/create";
-  
-    $.ajax({
-      type: "Post",
-      url: user_create_url,
-      data: params,
-      success: function (res) {
-        alert(res.message);
-      },
-      error: function (XMLHttpRequest, textStatus, errorThrown) {
-        alert("error")
-      }
+    var user_create_url = common_url+"/users/create";  
+    
+    postData(user_create_url, params).then((data) => {
+      console.log(data); // JSON data parsed by `data.json()` call
     });
+    
 
 }
+
