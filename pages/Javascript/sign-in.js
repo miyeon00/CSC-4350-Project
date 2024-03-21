@@ -8,13 +8,9 @@ function Login() {
   }
 
   var login_url = common_url + "/users/login";
-    
-  postData(login_url, params).then((data) => {
-    console.log(data); // JSON data parsed by `data.json()` call
-  });
+
+  // It will update to Post method with params
     
 }
-
-
 
 
