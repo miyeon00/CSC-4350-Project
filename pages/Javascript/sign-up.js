@@ -22,10 +22,12 @@ function Register(){
   
     var user_create_url = common_url+"/users/create";  
     
-    postData(user_create_url, params).then((data) => {
-      console.log(data); // JSON data parsed by `data.json()` call
-    });
-    
+    postData(user_create_url, params).then(data => {
+      let message  = data.message;
+      console.log(message);      
+      alert(message);
+
+  });
 
 }
 

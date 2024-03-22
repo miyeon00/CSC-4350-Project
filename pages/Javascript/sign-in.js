@@ -9,8 +9,23 @@ function Login() {
 
   var login_url = common_url + "/users/login";
 
-  // It will update to Post method with params
-  //
+  postData(login_url,params)
+  .then(data => {
+      let loginSuccessYN  = data.login;
+      console.log(loginSuccessYN);      
+
+      if(loginSuccessYN === true){
+        setCookie("username",username,1);
+        location.href="./dashboard.html";
+      }else{
+        alert("Login Failed");
+      }
+  });
+
+  
+
+
+  
     
 }
 
