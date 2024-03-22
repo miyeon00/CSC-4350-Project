@@ -20,7 +20,7 @@ function Class_Search() {
   }
 
   var lab_all_url = common_url + "/labs";
-  var count=1;
+  var count = 1;
   fetch(lab_all_url)
     .then((response) => {
       return response.json();
@@ -32,8 +32,8 @@ function Class_Search() {
         let startDate = data.startDate;
         let endDate = data.endDate;
         let course = data.course;
-        console.log(name);
-        getTable(true,name,startDate,endDate,course,count);
+        console.log(course);
+        getTable(false, name, startDate, endDate, course);
         count++;
       });
     })
@@ -43,91 +43,90 @@ function Class_Search() {
 
 }
 
-function getTable(rowYN, name, startDate, endDate, course,count) {
+function getTable(addYN, name, startDate, endDate, course) {
   var table = document.getElementById('labTable');
+  var new_row = table.insertRow();
+  var cell_length = table.rows[0].cells.length;
 
-  if (rowYN === true) {
-    var new_row = table.insertRow();
-    var cell_length = table.rows[0].cells.length;
+  for (let i = 0; i < cell_length; i++) {
+    var new_cell = new_row.insertCell();
+    var temp_html = '';
+    if (i == 0) {
+      temp_html = "<td>" +
+        "<div class=\'d-flex px-2\'>" +
+        "<span class=\'text-secondary text-sm font-weight-bold'\><i class=\"bi bi-book\"></i></span></div>" +
+        "</td>";
+    }
+    else if (i == 1) {
+      let courseHtml = addYN ? "<input type='\text\' id='new_course' />" : course ;
+      let nameHtml = addYN ? "<input type='\text\' id='new_name' />" : name ;
+      temp_html = "<td>" +
+        "<div class=\"d-flex flex-column justify-content-center\">" +
+        "<h6 class=\"mb-0 text-sm\">" + courseHtml + "</h6>" +
+        "<p class=\"text-xs text-secondary mb-0\">" + nameHtml + "</p>" +
+        "</div>" +
+        "</td>";
+    } else if (i == 2) {
+      temp_html = "<td>" +
+        "<div class=\"align-middle text-center text-sm\">" +
+        "<h6 class=\"mb-0 text-sm\">John Michael</h6>" +
+        "</div>" +
+        "</td>";
+    } else if (i == 3) {
+      
+      let infos = addYN ? "<input type=\"date\" id=\"new_startdate\" data-date-format=\"mm/dd/yyyy\" class=\"form-control\"> ~ "+
+        "<input type=\"date\" id=\"new_enddate\" data-date-format=\"mm/dd/yyyy\" class=\"form-control\">"
+        : startDate.substring(0, 10) + " ~ " + endDate.substring(0, 10);
+      temp_html = "<td>" +
+        "<div class=\"align-middle text-center text-sm\">" +
+        "<span class=\"text-secondary text-xs font-weight-bold\">"
+        + infos + "</span>" +
+        "</div>" +
+        "</td>";
+    }
+    else {
+      let buttontext = addYN ? "<button class='\ bg-gradient-warning text-dark \' onclick='creationLab()'>register</button>" : "<a class=\"text-secondary font-weight-bold text-xs\">Enter</a>";
+      temp_html = "<td>" + 
+        "<div class=\"align-middle text-center text-sm\">" +
+        buttontext+
+      "</div>" +
+        "</td>";
 
-    for (let i = 0; i < cell_length; i++) {
-      var new_cell = new_row.insertCell();
-      var temp_html='';
-      if (i == 0) {
-          temp_html="<td>"+
-          "<div class=\'d-flex px-2\'>"+
-           "<span class=\'text-secondary text-sm font-weight-bold'\>"+count+"</span></div>"+
-           "</td>";
-      }
-      else if(i==1){
-        temp_html = "<td>"+
-        "<div class=\"d-flex flex-column justify-content-center\">"+
-          "<h6 class=\"mb-0 text-sm\">"+course+"</h6>"+
-          "<p class=\"text-xs text-secondary mb-0\">"+name+"</p>"+
-        "</div>"+
-      "</td>";
-      }else if(i==2){
-        temp_html = "<td>"+
-        "<div class=\"align-middle text-center text-sm\">"+
-          "<h6 class=\"mb-0 text-sm\">John Michael</h6>"+
-        "</div>"+
-      "</td>";
-      }else if(i==3){
-        temp_html = "<td>"+
-        "<div class=\"align-middle text-center text-sm\">"+
-          "<span class=\"text-secondary text-xs font-weight-bold\">"
-          +startDate.substring(0,10)+ " ~ " +endDate.substring(0,10)+"</span>"+
-        "</div>"+
-      "</td>";
-      }
-      else{
-        temp_html = "<td>"+
-        "<div class=\"align-middle text-center text-sm\">"+
-          "<a class=\"text-secondary font-weight-bold text-xs\">Enter</a>"
-        "</div>"+
-      "</td>";
-       
-      }
-
-      new_cell.innerHTML=temp_html;
     }
 
-
+    new_cell.innerHTML = temp_html;
   }
-  else { rowYN == false } {
-
-  }
-
-
 }
 
-function creationLab() {
-  var name = document.getElementById("name").value; // 9 digits
-  var startDate = document.getElementById("startDate").value;
-  var endDate = document.getElementById("endDate").value;
-  var course = document.getElementById("course").value;
-
-  var S = {
-    name: name,
-    startDate: startDate,
-    endDate: endDate,
-    course: course
+  function LabAdd() {
+    getTable(true,"","","","");
   }
 
-  console.log(params);
+  function creationLab() {
+    var name = document.getElementById("new_name").value; // 9 digits
+    var startDate = document.getElementById("new_startdate").value;
+    var endDate = document.getElementById("new_enddate").value;
+    var course = document.getElementById("new_course").value;
 
-  var lab_create_url = common_url + "/labs/create";
+    var params = {
+      name: name,
+      startDate: startDate,
+      endDate: endDate,
+      course: course
+    }
 
-  postData(lab_create_url, params).then(data => {
-    let message = data.message;
-    console.log(message);
-    alert(message);
-    location.reload(true);
+    console.log(params);
 
+    var lab_create_url = common_url + "/labs/create";
 
-  });
-}
+    postData(lab_create_url, params).then(data => {
+      let message = data.message;
+      console.log(message);
+      alert(message);
+      Class_Search();
+    });
+  }
 
-function validation() {
+  function validation() {
 
-}
+  }
